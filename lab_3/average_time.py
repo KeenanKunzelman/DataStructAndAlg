@@ -21,28 +21,34 @@
 
 from time import time            # import time function from time module
 import dynamic_array
-def compute_average(n,how2append,howmany2appendby):
+def compute_average(n,version ,howmany2appendby):
   """Perform n appends to an empty list and return average time elapsed."""
   data = dynamic_array.DynamicArray()
   start = time()                 # record the start time (in seconds)
-  if how2append == 'append1':
+  if version == '2':
       for k in range(n):
         data.append1(k,howmany2appendby)
-  else:
+  elif version == '1':
       for k in range(n):
         data.append(k)
   end = time()                   # record the end time (in seconds)
-  print(end)
-  print(start)
+
   return (end - start) / n       # compute average per operation
 
 def main():
-    appends = int(input("input a value of appends to be executed "))
-    first = compute_average(appends,'notladksjf;l',5)
-    second = compute_average(appends, 'append1',1)
-    third = compute_average(appends, 'append1',5)
-    print("\n\nDoubling speed: " + str(first))
-    print("Using append1 and incrementing by 1: " + str(second))
-    print("Using append1 and incrementing by 5: " + str(third))
+
+    testCases = [10, 100, 1000, 10000]
+    while True:
+        cells_to_append = input("Enter a value for how many cells to append by ")
+        for i in range(4):
+            print("--------------------------------------------------")
+            print("\nTesting for case n = " + str(testCases[i]))
+            first = 1000000 * compute_average(testCases[i],'1',None)
+            second = 1000000 * compute_average(testCases[i], '2', int(cells_to_append))
+
+
+            print("\nDoubling speed: " + str(first) + " microseconds")
+            print("Using append1 and incrementing by " + str(cells_to_append) + " cells: "  + str(second) + " microseconds")
+
 if __name__ == '__main__':
     main()
