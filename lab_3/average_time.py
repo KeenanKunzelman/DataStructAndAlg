@@ -43,8 +43,9 @@ def main():
         for i in range(4):
             print("--------------------------------------------------")
             print("\nTesting for case n = " + str(testCases[i]))
-            first = 1000000 * compute_average(testCases[i],'1',None)
-            second = 1000000 * compute_average(testCases[i], '2', int(cells_to_append))
+            # 1000000 *
+            first = compute_average(testCases[i],'1',None)
+            second = compute_average(testCases[i], '2', int(cells_to_append))
 
 
             print("\nDoubling speed: " + str(first) + " microseconds")
